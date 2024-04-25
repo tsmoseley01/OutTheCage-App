@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block title%} 
+User Registration
+{% endblock %}
+
+{%block content%}
+    <!DOCTYPE html>
+<html lang="en" dir="itr">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/styleuser.css' %}">
+        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <div class="title">User Registration</div>
+            <div class="content">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="user-details">
+                        <div class="input-box">
+                            <label>First Name: </label>
+                    <input type="text" name="first_name">
+                    <div class="input-box">
+                        <label>Last Name: </label>
+                    <input type="text" name="last_name">
+                    </div>
+                    <label>Select Role:
+                        <input list="rolelist" name="role" /></label>
+                        <datalist id="rolelist">
+                          <option value="Student">
+                          <option value="Faculty">
+                        </datalist>
+                        <div class="input-box">
+                            <label>Username: </label>
+                    <input type="text" name="username">
+                        </div>
+                        <div class="input-box">
+                            <label>Email ID: </label>
+                            <input type="email" name="email">
+                        </div>
+                        <div class="input-box">
+                            <label>Password : </label>
+                            <input type="password" name="password">
+                        </div>
+                        <div class="input-box">
+                            <label> Confirm Password : </label>
+                            <input type="password" name="confirmpassword">
+                        </div>
+                        </div>
+                    <div class="button">
+                        <input type="submit" name="submit" value="SignUp">
+                    </div>
+                </form>
+                    </div>
+{% for message in messages %}
+<script>
+    alert('{{message}}');
+</script>
+{% endfor %}
+        </div>
+
+    </body>
+</html>
+{% endblock %}
